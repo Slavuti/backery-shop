@@ -5,8 +5,7 @@ class Food(models.Model):
     Сompound = models.CharField('Compound', max_length=100)
     Description = models.TextField('Compound', max_length=200)
     Price = models.DecimalField(max_digits=10, decimal_places=2)
-#   img
-
+    image = models.ImageField('Image', upload_to='foods/', blank=True, null=True)
     def __str__(self):
         return self.Name
     
