@@ -1,3 +1,6 @@
+
+from pathlib import Path
+import os
 """
 Django settings for BackeryProject project.
 
@@ -56,7 +59,8 @@ ROOT_URLCONF = 'BackeryProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Добавляем 'BackeryProject' в путь
+        'DIRS': [BASE_DIR / 'BackeryProject' / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'BackeryProject.wsgi.application'
 
@@ -117,8 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-import os
+STATICFILES_DIRS = [
+    BASE_DIR / 'BackeryProject' / 'static',
+]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

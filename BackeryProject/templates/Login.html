@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Login — Maison Brûlée</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body class="theme-cream">
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="Logo"><path d="M12 3c-4.4 0-8 3.6-8 8 0 4 2.8 7.3 6.6 7.9V21h2.8v-2.1c3.8-.6 6.6-3.9 6.6-7.9 0-4.4-3.6-8-8-8Zm0 2c3.3 0 6 2.7 6 6 0 3-2.2 5.5-5 5.9V14h-2v2.9c-2.8-.4-5-2.9-5-5.9 0-3.3 2.7-6 6-6Zm-1 2v5.2l4.1 2.4 1-1.7-3.1-1.8V7h-2Z"/></svg>
+          </span>
+          <span>Maison Brûlée</span>
+        </a>
+        <div class="nav-actions">
+          <div class="theme-switch" id="theme-switch">
+            <button data-theme="theme-cream" class="theme-btn active" aria-label="Cream theme">☀️</button>
+            <button data-theme="theme-dark" class="theme-btn" aria-label="Dark theme">🌙</button>
+            <button data-theme="theme-terracotta" class="theme-btn" aria-label="Terracotta theme">🍂</button>
+          </div>
+          <a class="nav-link nav-link--light" href="register.html">Sign Up</a>
+          <a class="nav-link nav-link--dark" href="login.html">Log In</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <section class="auth-card">
+      <h1>Welcome back</h1>
+      <p>Sign in to continue your order, view offers, and manage your profile.</p>
+      <form class="auth-form">
+        <input class="input" type="email" placeholder="Email address" required />
+        <input class="input" type="password" placeholder="Password" required />
+        <div class="auth-actions">
+          <button class="btn btn-primary" type="submit">Log In</button>
+          <a class="btn btn-secondary" href="index.html">Back to Home</a>
+        </div>
+      </form>
+      <div class="auth-switch">No account yet? <a href="register.html">Sign up</a></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>Maison Brûlée</strong><span>French bakery elegance, served daily.</span></div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="payment.html">Payment</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
