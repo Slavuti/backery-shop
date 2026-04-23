@@ -7,8 +7,11 @@ from django.contrib.auth import authenticate
 def home(request):
     return render(request, 'Login.html')
 
-def HomePage(request): # Функция которая вызывает страницу HomePage.html
+def HomePage(request): 
     return render(request, "HomePage.html")
+
+def Menu(request): 
+    return render(request, "Menu.html")
 
 def register_view(request):
     if request.method == "POST":

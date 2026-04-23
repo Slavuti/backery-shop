@@ -5,8 +5,9 @@ from django.conf import settings
 class Food(models.Model):
     Name = models.CharField('Name', max_length=30)
     Сompound = models.CharField('Compound', max_length=100)
-    Description = models.TextField('Compound', max_length=200)
+    Description = models.TextField('Description', max_length=200)
     Price = models.DecimalField(max_digits=10, decimal_places=2)
+    Weight = models.CharField('Weight', max_length=100)
     image = models.ImageField('Image', upload_to='foods/', blank=True, null=True)
     def __str__(self):
         return self.Name
