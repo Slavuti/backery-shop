@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}" />
+</head>
+<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;background-image: url('{% static 'Ponchik.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <header class="header">
+        <div class="container" style="display: flex; justify-content: center;">
+            <nav class="nav" aria-label="Primary navigation">
+                <p class="brand" style="margin: 0;">
+                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;"> Sweet Сookie Paradise </span>
+                </p>
+            </nav>
+        </div>
+    </header>
+    <main class="auth-page" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-bottom: 140px;">
+        <section class="auth-card">
+            <h1>Create your account</h1>
+            <p>Join Sweet Сookie Paradise to place orders faster and save your favorite pastries.</p>
+
+            <!-- ИЗМЕНЕНИЕ: Добавлены method="POST" и action на твой url -->
+            <form class="auth-form" method="POST" action="{% url 'Register' %}">
+                <!-- ИЗМЕНЕНИЕ: Добавлен CSRF токен для защиты (обязательно в Django) -->
+                {% csrf_token %}
+
+                <!-- ИЗМЕНЕНИЕ: Вывод ошибок, если форма заполнена неверно -->
+                {% if form.errors %}
+                <div style="color: red; margin-bottom: 10px; font-size: 14px;">
+                    Пожалуйста, проверьте правильность данных.
+                </div>
+                {% endif %}
+
+                <div class="input-row">
+                    <!-- ИЗМЕНЕНИЕ: Добавлен name="username" (в Django User это обязательное поле) -->
+                    <input class="input" type="text" name="username" placeholder="Username" required />
+                    
+                    <!-- ИЗМЕНЕНИЕ: Добавлен name="email" -->
+                    <input class="input" type="email" name="email" placeholder="Email address" required />
+                </div>
+
+                <!-- ИЗМЕНЕНИЕ: UserCreationForm требует поля password1 и password2 -->
+                <input class="input" type="password" name="password1" placeholder="Password" required />
+                <input class="input" type="password" name="password2" placeholder="Confirm password" required />
+
+                <div class="auth-actions">
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                    <a class="btn btn-secondary" href="{% url 'Login' %}">Home</a>
+                </div>
+            </form>
+
+            <div class="auth-switch">Already have an account? <a href="{% url 'Login' %}">Log in</a></div>
+        </section>
+    </main>
+    <script src="{% static 'theme.js' %}"></script> <!-- ИЗМЕНЕНИЕ: Добавлен тег static для скрипта -->
+</body>
+</html>

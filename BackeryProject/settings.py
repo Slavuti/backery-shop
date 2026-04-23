@@ -128,3 +128,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#Payment
+STRIPE_PUBLIC_KEY = "mk_1TFVba0JoykmbZYz2rx20lcx"
+STRIPE_SECRET_KEY = "mk_1TFVdX0JoykmbZYzmQF2EIVs"

@@ -1,11 +1,158 @@
+{% load static %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomePage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Maison Brûlée — French Bakery</title>
+  <link rel="stylesheet" href="{% static 'style.css'%}" />
 </head>
-<body style="text-align: center;">
-<p>Вы попали на HomePage</p>
+<body class="theme-cream">
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="Logo"><path d="M12 3c-4.4 0-8 3.6-8 8 0 4 2.8 7.3 6.6 7.9V21h2.8v-2.1c3.8-.6 6.6-3.9 6.6-7.9 0-4.4-3.6-8-8-8Zm0 2c3.3 0 6 2.7 6 6 0 3-2.2 5.5-5 5.9V14h-2v2.9c-2.8-.4-5-2.9-5-5.9 0-3.3 2.7-6 6-6Zm-1 2v5.2l4.1 2.4 1-1.7-3.1-1.8V7h-2Z"/></svg>
+          </span>
+          <span>Maison Brûlée</span>
+        </a>
+        <div class="nav-actions">
+          <div class="theme-switch" id="theme-switch">
+            <button data-theme="theme-cream" class="theme-btn active" aria-label="Cream theme">☀️</button>
+            <button data-theme="theme-dark" class="theme-btn" aria-label="Dark theme">🌙</button>
+            <button data-theme="theme-terracotta" class="theme-btn" aria-label="Terracotta theme">🍂</button>
+          </div>
+          <a class="nav-link nav-link--light" href="register.html">Sign Up</a>
+          <a class="nav-link nav-link--dark" href="login.html">Log In</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">French Bakery • Artisan Pastries • Daily Fresh</div>
+            <h1>Elegant pastries, baked with quiet confidence.</h1>
+            <p>Maison Brûlée brings a refined French bakery experience to your table: buttery croissants, crisp baguettes, delicate tarts, and coffee served with understated luxury.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#menu">Explore the Menu</a>
+              <a class="btn btn-secondary" href="#discount">View Today’s Offer</a>
+            </div>
+          </div>
+          <div class="hero-card" aria-label="French bakery showcase image">
+            <div class="hero-badge">
+              <strong>Signature Morning Set</strong>
+              <span>Pair a croissant, espresso, and a small pastry for a polished breakfast ritual.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Top Picks</h2>
+            <p>Our most requested French-style pastries and café staples, curated for a premium menu experience.</p>
+          </div>
+        </div>
+        <div class="products-grid">
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Butter Croissant</h3><span class="price">$5.50</span></div>
+              <p>Layers of delicate pastry with a crisp shell and a rich, buttery finish.</p>
+              <span class="product-tag">French Classic</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Rustic Baguette</h3><span class="price">$4.20</span></div>
+              <p>Golden crust, open crumb, and the unmistakable aroma of an artisan bakehouse.</p>
+              <span class="product-tag">Daily Baked</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Pain au Chocolat</h3><span class="price">$5.90</span></div>
+              <p>Flaky pastry wrapped around smooth chocolate for an indulgent morning treat.</p>
+              <span class="product-tag">Best Seller</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Cinnamon Brioche</h3><span class="price">$6.10</span></div>
+              <p>Soft brioche with warm spice notes and a silky glaze finished by hand.</p>
+              <span class="product-tag">Chef’s Choice</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Berry Tart</h3><span class="price">$7.80</span></div>
+              <p>Crème fraîche, seasonal berries, and a crisp tart shell with elegant balance.</p>
+              <span class="product-tag">Seasonal Favorite</span>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1517436073-3b3b1b7f1f3f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="product-content">
+              <div class="product-top"><h3>Signature Latte</h3><span class="price">$6.00</span></div>
+              <p>Velvety milk, balanced espresso, and a finish designed to complement pastry.</p>
+              <span class="product-tag">Café Pairing</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section promo" id="discount">
+      <div class="container">
+        <div class="promo-box">
+          <div class="promo-content">
+            <h2>Today’s Offer: 20% Off the Morning Set</h2>
+            <p>Available until 12:00 PM. Enjoy a refined breakfast pairing of pastry and coffee at a special price, crafted for slow, elegant mornings.</p>
+            <div class="promo-stat">
+              <div class="stat"><strong>Until 12:00 PM</strong><span>morning orders only</span></div>
+              <div class="stat"><strong>20% Off</strong><span>selected breakfast sets</span></div>
+              <div class="stat"><strong>Fresh Daily</strong><span>small-batch bakery production</span></div>
+            </div>
+          </div>
+          <div class="promo-visual">
+            <div class="promo-circle"><div><strong>20%</strong><span>off the signature morning set</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>Maison Brûlée</strong><span>French bakery elegance, served daily.</span></div>
+        <div class="footer-links">
+          <a href="#top">Top</a>
+          <a href="#menu">Menu</a>
+          <a href="#discount">Offer</a>
+          <a href="payment.html">Payment</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
 </body>
 </html>

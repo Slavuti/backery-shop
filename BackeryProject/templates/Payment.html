@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Payment — Maison Brûlée</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-cream">
+  
+   <header class="header">
+        <div class="container" style="display: flex; justify-content: center;">
+            <nav class="nav" aria-label="Primary navigation">
+                <p class="brand" style="margin: 0;">
+                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;">
+                        Sweet Сookie Paradise
+                    </span>
+                </p> <!-- Исправил тут </> на </p> -->
+            </nav>
+        </div>
+    </header>
+
+  <main class="section" style="padding-top:28px;">
+    <div class="container payment-layout">
+      <section class="panel">
+        <div class="eyebrow">Secure Checkout</div>
+        <h2>Payment Details</h2>
+        <p>Complete your purchase with a clean and secure checkout flow.</p>
+        <form class="auth-form">
+          <div class="input-row">
+            <input class="input" type="text" placeholder="Cardholder name" required />
+            <input class="input" type="text" placeholder="Card number" inputmode="numeric" required />
+          </div>
+          <div class="input-row">
+            <input class="input" type="text" placeholder="MM / YY" required />
+            <input class="input" type="text" placeholder="CVC" inputmode="numeric" required />
+          </div>
+          <input class="input" type="text" placeholder="Billing address" required />
+          <div class="input-row">
+            <select class="select" required>
+              <option value="">Country</option>
+              <option>France</option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Germany</option>
+              <option>Other</option>
+            </select>
+            <input class="input" type="text" placeholder="ZIP / Postal code" required />
+          </div>
+          <textarea class="textarea" placeholder="Order notes (optional)"></textarea>
+          <div class="auth-actions">
+            <button class="btn btn-primary" type="submit">Pay Now</button>
+            <a class="btn btn-secondary" href="index.html">Back to Home</a>
+          </div>
+        </form>
+      </section>
+
+      <aside class="panel">
+        <div class="eyebrow">Order Summary</div>
+        <h2>Morning Set</h2>
+        <div class="summary-item">
+          <div>
+            <strong>Butter Croissant</strong>
+            <span>1 × classic pastry</span>
+          </div>
+          <strong>$5.50</strong>
+        </div>
+        <div class="summary-item">
+          <div>
+            <strong>Signature Latte</strong>
+            <span>1 × café pairing</span>
+          </div>
+          <strong>$6.00</strong>
+        </div>
+        <div class="summary-item">
+          <div>
+            <strong>Morning Set Discount</strong>
+            <span>20% promotional offer</span>
+          </div>
+          <strong>- $2.30</strong>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <span>$9.20</span>
+        </div>
+        <p class="checkout-note">Your payment is processed securely. Delivery or pickup details can be confirmed after checkout.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>Maison Brûlée</strong><span>French bakery elegance, served daily.</span></div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="#top">Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
