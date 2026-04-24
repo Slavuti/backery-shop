@@ -55,8 +55,9 @@ def Menu_view(request):
     products = Food.objects.all() 
     return render(request, 'Menu.html', {'food': products})
 
-@login_required
 def basket_add(request, food_id):
+    if not request.user.is_authenticated:
+        return redirect('Login')
     food = Food.objects.get(id=food_id)
     baskets = Basket.objects.filter(user=request.user, food=food)
 

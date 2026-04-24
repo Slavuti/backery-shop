@@ -3,9 +3,9 @@ from .  import views
 from .views import home, register_view, login_view, logout_view
 
 urlpatterns = [
-    path('', views.login_view, name='Login'),
+    path('Login', views.login_view, name='Login'),
     path('Register', views.register_view, name='Register'),
-    path('HomePage', views.HomePage, name='HomePage'),
+    path('', views.HomePage, name='HomePage'),
     path('Menu', views.Menu_view, name='Menu'),
     path('Payment', views.Payment, name='Payment'),
     path('basket/remove/<int:basket_id>/', views.basket_remove, name='basket_remove'),
