@@ -9,17 +9,38 @@
     <link rel="stylesheet" href="{% static 'style.css'%}" />
 </head>
 <body>
-    <header class="header">
-        <div class="container" style="display: flex; justify-content: center;">
-            <nav class="nav" aria-label="Primary navigation">
+        <header class="header">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+            <!-- Пустой блок слева для центровки названия -->
+            <div style="flex: 1;"></div>
+
+            <!-- Название бренда по центру -->
+            <nav class="nav" aria-label="Primary navigation" style="flex: 2; text-align: center;">
                 <p class="brand" style="margin: 0;">
-                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;">
+                    <span style="display: inline-block; font-size: 24px; font-weight: bold;">
                         Sweet Сookie Paradise
                     </span>
                 </p>
             </nav>
+
+            <!-- Кнопка Login/Logout справа -->
+            <div style="flex: 1; display: flex; justify-content: flex-end;">
+                {% if user.is_authenticated %}
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="font-size: 14px; opacity: 0.7;">Hi, {{ user.username }}</span>
+                        <a href="{% url 'Login' %}" class="btn" style="text-decoration: none; color: #000; font-size: 14px; border: 1px solid #000; padding: 6px 12px; border-radius: 5px; transition: all 0.2s;">
+                            Logout
+                        </a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'Login' %}" class="btn" style="text-decoration: none; color: #fff; background: #000; font-size: 14px; padding: 8px 20px; border-radius: 5px; font-weight: bold; transition: opacity 0.2s;">
+                        Login
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </header>
+
 
     <main>
         <section class="hero">
@@ -30,8 +51,15 @@
                         <h1>Elegant pastries, baked with quiet confidence.</h1>
                         <p>Sweet Сookie Paradise is a small bakery shaped by early mornings, warm ovens, and a simple belief: every loaf should feel handcrafted, fragrant, and memorable. The brand grew from a family recipe book and a neighborhood oven that never stayed cold for long.</p>
                         <div class="hero-cta">
-                            <a class="btn btn-primary" href="Menu">Explore the Menu</a>
-                            <a class="btn btn-secondary" href="Basket">View Basket</a>
+                            <a class="btn btn-primary" href="/Menu">Explore the Menu</a>
+                            
+                            {% if user.is_authenticated %}
+                                <!-- Если вошел — ведем в корзину -->
+                                <a class="btn btn-secondary" href="UserBasket">View Basket</a>
+                            {% else %}
+                                <!-- Если не вошел — ведем на главную (где логин) с параметром возврата -->
+                                <a class="btn btn-secondary" href="/">View Basket</a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="hero-card" 
@@ -81,14 +109,16 @@
                 <div class="split-grid">
                     <div class="story-stack">
                         <article class="feature-card">
-                            <div class="eyebrow" style="margin-left: -20px;">
+                            <div class="eyebrow" style="margin-left: -20px;margin-bottom: 10px;padding-bottom:0px;">
                                 <h1>Tradition</h1>
                             </div>
                             <h3>Recipes that respect the classics</h3>
                             <p>Our croissants, brioche, and tart shells follow classic French proportions, then are finished with a modern, cleaner presentation.</p>
                         </article>
                         <article class="feature-card">
-                            <div class="eyebrow">Atmosphere</div>
+                            <div class="eyebrow" style="margin-left: -20px;margin-top: 30px;padding-bottom:0px;">
+                                <h1>Atmosphere</h1>
+                            </div>
                             <h3>A quiet space for slow mornings</h3>
                             <p>The bakery is designed around calm service, warm lighting, and a menu that invites customers to stay a little longer.</p>
                         </article>
@@ -112,7 +142,7 @@
 
             <!-- Контакты в одну строку -->
             <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                <a href="mailto:hello@maisonbrulee.com" style="text-decoration: none; color: #000;">hello@maisonbrulee.com</a>
+                <a href="mailto:hello@maisonbrulee.com" style="text-decoration: none; color: #000;">SweetСookieParadise@maisonbrulee.com</a>
                 <a href="tel:+33123456789" style="text-decoration: none; color: #000;">+33 1 23 45 67 89</a>
                 <span style="color: #000;">18 Rue des Rosiers, Paris</span>
                 <a href="#" style="text-decoration: none; color: #000;">Instagram</a>

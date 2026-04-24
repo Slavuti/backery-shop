@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="actions">
-                        <a href="/basket/add/{{ food.id }}" style="display: block; text-align: center; background: #000; color: #fff; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: bold; transition: opacity 0.2s;">
+                        <a href="{% url 'basket_add' food.id %}" style="display: block; text-align: center; background: #000; color: #fff; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: bold; transition: opacity 0.2s;">
                             Add to Basket — {{ food.Price }} €
                         </a>
                     </div>

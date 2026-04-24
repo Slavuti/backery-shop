@@ -1,57 +1,97 @@
 {% load static %}
+{% load socialaccount %} <!-- Загружаем теги для работы с соцсетями -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Login</title>
+    <title>Login — Sweet Cookie Paradise</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-    <link rel="stylesheet" href="{% static 'style.css'%}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
 </head>
-<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;background-image: url('{% static 'BackGroundLogin.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; background-image: url('{% static 'BackGroundLogin.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
     <header class="header">
         <div class="container" style="display: flex; justify-content: center;">
             <nav class="nav" aria-label="Primary navigation">
                 <p class="brand" style="margin: 0;">
-                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;"> Sweet Сookie Paradise </span>
+                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;"> 
+                        Sweet Сookie Paradise 
+                    </span>
                 </p>
             </nav>
         </div>
     </header>
-    <main class="auth-page" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-bottom: 140px;">
-        <section class="auth-card">
-            <h1>Welcome back</h1>
-            <p>Sign in to continue your order, view offers, and manage your profile.</p>
 
-            <!-- ИЗМЕНЕНИЕ: Добавлен метод POST и action на твой login_view -->
+    <main class="auth-page" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-bottom: 80px;">
+        <section class="auth-card" style="background: rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center;">
+            <h1 style="margin-top: 0;">Welcome back</h1>
+            <p style="margin-bottom: 30px; opacity: 0.8;">Sign in to continue your order and manage your profile.</p>
+
+            <!-- Стандартная форма логина -->
             <form class="auth-form" method="POST" action="{% url 'Login' %}">
-                <!-- ИЗМЕНЕНИЕ: CSRF токен обязателен -->
                 {% csrf_token %}
 
-                <!-- ИЗМЕНЕНИЕ: Вывод ошибок (например, если пароль неверный) -->
                 {% if form.errors %}
-                <div style="color: red; margin-bottom: 10px; font-size: 14px;">
-                    Invalid email or password.
-                </div>
+                    <div style="color: #e74c3c; margin-bottom: 15px; font-size: 14px; background: #fdf2f2; padding: 10px; border-radius: 8px;">
+                        Invalid username or password.
+                    </div>
                 {% endif %}
 
-                <!-- ИЗМЕНЕНИЕ: name="username". В Django AuthenticationForm поле называется так -->
-                <!-- Если ты хочешь входить именно по Email, это настраивается отдельно, 
-                     но по стандарту Django ждет username -->
-                <input class="input" type="text" name="username" placeholder="Username" required />
+                <input class="input" type="text" name="username" placeholder="Username" required 
+                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;" />
                 
-                <!-- ИЗМЕНЕНИЕ: name="password" -->
-                <input class="input" type="password" name="password" placeholder="Password" required />
+                <input class="input" type="password" name="password" placeholder="Password" required 
+                       style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;" />
 
-                <div class="auth-actions">
-                    <button class="btn btn-primary" type="submit">Log In</button>
-                    <a class="btn btn-secondary" href="{% url 'HomePage' %}">Home</a>
+                <div class="auth-actions" style="display: flex; flex-direction: column; gap: 12px;">
+                    <!-- Основная кнопка входа -->
+                    <button class="btn btn-primary" type="submit" style="width: 100%; padding: 12px; background: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        Log In
+                    </button>
+
+                    <!-- Разделитель -->
+                    <div style="margin: 10px 0; display: flex; align-items: center; text-align: center; color: #888; font-size: 12px;">
+                        <div style="flex: 1; height: 1px; background: #ddd;"></div>
+                        <span style="margin: 0 10px;">OR</span>
+                        <div style="flex: 1; height: 1px; background: #ddd;"></div>
+                    </div>
+
+                    <!-- КНОПКА GOOGLE -->
+                                        <a href="{% provider_login_url 'google' %}" class="btn-google" 
+                    style="display: flex; align-items: center; justify-content: center; gap: 12px; 
+                            background: #ffffff; color: #444; border: 1px solid #e0e0e0; 
+                            padding: 12px; border-radius: 12px; text-decoration: none; 
+                            font-size: 15px; font-weight: 600; font-family: 'Segoe UI', Roboto, sans-serif;
+                            transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                            outline: none;"
+                    onmouseover="this.style.backgroundColor='#f8f9fa'; this.style.borderColor='#d0d0d0'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"
+                    onmouseout="this.style.backgroundColor='#ffffff'; this.style.borderColor='#e0e0e0'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';">
+                        
+                        <svg width="20" height="20" viewBox="0 0 48 48" style="display:block;">
+                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                            <path fill="none" d="M0 0h48v48H0z"></path>
+                        </svg>
+                        
+                        Sign in with Google
+                    </a>
+
+                    <a class="btn btn-secondary" href="{% url 'HomePage' %}" style="text-decoration: none; color: #666; font-size: 14px; margin-top: 5px;">
+                        Back to Home
+                    </a>
                 </div>
             </form>
 
-            <div class="auth-switch">No account yet? <a href="{% url 'Register' %}">Sign up</a></div>
+            <div class="auth-switch" style="margin-top: 25px; font-size: 14px; color: #555;">
+                No account yet? <a href="{% url 'Register' %}" style="color: #000; font-weight: bold; text-decoration: none;">Sign up</a>
+            </div>
         </section>
     </main>
+
     <script src="{% static 'theme.js' %}"></script>
 </body>
 </html>
