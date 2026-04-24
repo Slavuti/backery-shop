@@ -28,7 +28,7 @@
                 {% if user.is_authenticated %}
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <span style="font-size: 14px; opacity: 0.7;">Hi, {{ user.username }}</span>
-                        <a href="{% url 'Login' %}" class="btn" style="text-decoration: none; color: #000; font-size: 14px; border: 1px solid #000; padding: 6px 12px; border-radius: 5px; transition: all 0.2s;">
+                        <a href="{% url 'logout' %}" class="btn" style="text-decoration: none; color: #000; font-size: 14px; border: 1px solid #000; padding: 6px 12px; border-radius: 5px; transition: all 0.2s;">
                             Logout
                         </a>
                     </div>

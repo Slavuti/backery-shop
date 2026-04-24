@@ -7,6 +7,7 @@ from orders.models import Food
 from django.shortcuts import render, get_object_or_404
 from .models import Basket
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout 
 
 def home(request):
     return render(request, 'Login.html')
@@ -19,6 +20,13 @@ def basket_remove(request, basket_id):
     basket.delete()
     return redirect(request.META.get('HTTP_REFERER', 'basket'))
 
+def logout_view(request):
+    logout(request)
+    return redirect('Login')
+
+def Payment(request):
+    return redirect(request,'Payment.html')
+                    
 def Bake(request): 
     return render(request, "Bake.html")
 
