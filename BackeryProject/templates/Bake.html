@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{{ food.Name }} — Sweet Сookie Paradise</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body style="background-color: #fafafa;">
+    <header class="header">
+        <div class="container" style="display: flex; justify-content: center;">
+            <nav class="nav" aria-label="Primary navigation">
+                <p class="brand" style="margin: 0;">
+                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;">
+                        Sweet Сookie Paradise
+                    </span>
+                </p>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section" style="padding-top: 40px;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+            
+            <!-- Кнопка назад -->
+            <div style="margin-bottom: 30px;">
+                <a href="/Menu" style="text-decoration: none; color: #000; font-weight: bold; font-size: 16px; border-bottom: 1px solid #000; padding-bottom: 2px;">
+                    ← Back to Menu
+                </a>
+            </div>
+
+            <div class="product-detail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+                
+                <!-- Левая колонка: Фото -->
+                <div class="product-image">
+                    {% if food.image %}
+                        <img src="{{ food.image.url }}" alt="{{ food.Name }}" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    {% else %}
+                        <div style="width: 100%; height: 400px; background: #eee; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                            No Image
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Правая колонка: Инфо -->
+                <div class="product-info">
+                    <h1 style="margin: 0 0 10px 0; font-size: 32px;">{{ food.Name }}</h1>
+                    <p style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">{{ food.Price }} €</p>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; opacity: 0.6;">Description</h3>
+                        <p style="line-height: 1.6; font-size: 16px; color: #333;">{{ food.Description }}</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; opacity: 0.6;">Compound</h3>
+                        <p style="font-size: 15px; color: #555;">{{ food.Сompound }}</p>
+                    </div>
+
+                    <div style="margin-bottom: 30px; padding: 15px; background: #f2f2f2; border-radius: 10px; display: inline-block;">
+                        <span style="font-weight: bold;">Weight:</span> {{ food.Weight }}
+                    </div>
+
+                    <div class="actions">
+                        <a href="/basket/add/{{ food.id }}" style="display: block; text-align: center; background: #000; color: #fff; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: bold; transition: opacity 0.2s;">
+                            Add to Basket — {{ food.Price }} €
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="theme.js"></script>
+</body>
+</html>

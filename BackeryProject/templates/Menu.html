@@ -4,23 +4,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Login</title>
+    <title>Menu — Sweet Сookie Paradise</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="stylesheet" href="{% static 'style.css'%}" />
 </head>
-<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;background-image: url('{% static 'BackGroundLogin.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body style="background-color: #fafafa;">
     <header class="header">
         <div class="container" style="display: flex; justify-content: center;">
             <nav class="nav" aria-label="Primary navigation">
                 <p class="brand" style="margin: 0;">
-                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;"> Sweet Сookie Paradise </span>
+                    <span style="display: inline-block; margin-top: 15px; margin-bottom: 15px; font-size: 24px;">
+                        Sweet Сookie Paradise
+                    </span>
                 </p>
             </nav>
         </div>
     </header>
-   
 
+    <main class="section">
+        <div class="container">
+            <h1 style="margin-bottom: 10px;">Menu</h1>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px;">
+                <p style="font-size: 18px; opacity: 0.8; margin: 0;">
+                    Select your pastries and fresh bakery favorites.
+                </p>
+                <a href="HomePage" style="text-decoration: none; color: #000; font-weight: bold; font-size: 16px; border-bottom: 1px solid #000; padding-bottom: 2px;">
+                    Back to Home →
+                </a>
+            </div>
 
-    
-    <script src="{% static 'theme.js' %}"></script>
+            <div class="products-grid" style="margin-top:22px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+                {% for item in food %}
+                <!-- Уменьшаем масштаб всей карточки до 90% и ограничиваем ширину -->
+                <article class="product-card" style="background-color: #f2f2f2; border-radius: 15px; overflow: hidden; padding-bottom: 15px; transition: transform 0.2s ease; width: 280px; margin: 0 auto;">
+                    <a class="product-card__link" href="/bake/{{ item.id }}" style="text-decoration: none; color: inherit;">
+                        <!-- Уменьшили высоту картинки до 180px -->
+                        <div class="product-media" style="background-image:url('{{ item.image.url }}'); height: 180px; background-size: cover; background-position: center;"></div>
+                        
+                        <div class="product-content" style="padding: 12px;">
+                            <div class="product-top" style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3 style="margin: 0; font-size: 18px;">{{ item.Name }}</h3>
+                                <span class="price" style="font-weight: bold; font-size: 16px;">{{ item.Price }} €</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="product-footer" style="display: flex; justify-content: center; padding: 0 12px;">
+                        <a class="btn btn-primary" href="/basket/add/{{ item.id }}" 
+                           style="box-shadow: none; border: 1px solid #000; background: transparent; color: #000; padding: 8px 16px; text-decoration: none; border-radius: 5px; font-size: 14px;">
+                           Add to Basket
+                        </a>
+                    </div>
+                </article>
+                {% empty %}
+                <p>No products found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <script src="theme.js"></script>
 </body>
 </html>

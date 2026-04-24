@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Register</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="stylesheet" href="{% static 'style.css'%}" />
 </head>
-<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;background-image: url('{% static 'Ponchik.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<body class="theme-cream" style="margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;background-image: url('{% static 'Xleb.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <header class="header">
         <div class="container" style="display: flex; justify-content: center;">
             <nav class="nav" aria-label="Primary navigation">
@@ -48,7 +49,7 @@
 
                 <div class="auth-actions">
                     <button class="btn btn-primary" type="submit">Sign Up</button>
-                    <a class="btn btn-secondary" href="{% url 'Login' %}">Home</a>
+                    <a class="btn btn-secondary" href="{% url 'HomePage' %}">Home</a>
                 </div>
             </form>
 

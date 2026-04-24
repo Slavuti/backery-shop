@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.login_view, name = 'Login'),
     path('Register', views.register_view, name='Register'),
     path('HomePage',views.HomePage, name='HomePage'),
-    path('Menu',views.Menu, name='Menu')
+    path('Menu',views.Menu_view, name='Menu'),
+    path('bake/<int:pk>', views.food_detail, name='food_detail'),
 ]

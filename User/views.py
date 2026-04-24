@@ -3,6 +3,9 @@ from .forms import RegisterForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
+from orders.models import Food 
+from django.shortcuts import render, get_object_or_404
+
 
 def home(request):
     return render(request, 'Login.html')
@@ -10,8 +13,16 @@ def home(request):
 def HomePage(request): 
     return render(request, "HomePage.html")
 
-def Menu(request): 
-    return render(request, "Menu.html")
+def Bake(request): 
+    return render(request, "Bake.html")
+
+def food_detail(request, pk):
+    food = get_object_or_404(Food, pk=pk)
+    return render(request, 'Bake.html', {'food': food})
+
+def Menu_view(request):
+    products = Food.objects.all() 
+    return render(request, 'Menu.html', {'food': products})
 
 def register_view(request):
     if request.method == "POST":
